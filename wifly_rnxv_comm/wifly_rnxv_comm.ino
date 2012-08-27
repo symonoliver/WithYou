@@ -1,15 +1,13 @@
 /*
- * WiFlyHQ Example udpclient.ino
+ * Based off WiFlyHQ Example udpclient.ino
  *
- * This sketch implements a simple UDP client that sends a UDP packet
- * to a UDP server every second.
+ * This sketch implements a simple UDP client that sends and receives UDP packets
+ * to control hardware connected to an Arduino.
  *
  * This sketch is released to the public domain.
- *
  */
 
-
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h> //Library included in Arduino 1.0
 SoftwareSerial wifiSerial(8,9);
 
 //#include <AltSoftSerial.h>
@@ -30,7 +28,7 @@ WiFly wifly;
 void setup()
 {
   pinMode(led, OUTPUT);
-  
+
   char buf[32];
 
   Serial.begin(115200);
@@ -123,8 +121,8 @@ uint32_t count=0;
 
 void loop()
 {
-  //wifly.print(2);
-  if (wifly.available() > 0) {
+  //wifly.print(2); //Send UDP
+  if (wifly.available() > 0) { //Receive UDP
     int match = wifly.multiMatch_P(100, 3,
     F("button"), F("slider="), F("switch="));
     switch (match) {
@@ -169,3 +167,4 @@ void terminal()
     }
   }
 }
+

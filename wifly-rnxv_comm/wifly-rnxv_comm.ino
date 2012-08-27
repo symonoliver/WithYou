@@ -18,8 +18,8 @@ SoftwareSerial wifiSerial(8,9);
 #include <WiFlyHQ.h>
 
 /* Change these to match your WiFi network */
-const char mySSID[] = "SOLM";
-const char myPassword[] = "zero0and";
+const char mySSID[] = "";
+const char myPassword[] = "";
 
 int led = 13;
 
